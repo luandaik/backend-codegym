@@ -42,5 +42,6 @@ Route::get('/totalhome',[HomePageEtcController::class,'selectToTalHome']);
 Route::get('images', [ImageController::class, 'index'])->name('images');
 Route::post('images', [ImageController::class, 'upload'])->name('images');
 Route::post('addnewcomic', [ComicsController::class, 'addNewComic']);
+Route::post('updatecomic', [ComicsController::class, 'updateComic']);
 
 

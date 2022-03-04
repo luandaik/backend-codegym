@@ -58,4 +58,27 @@ class ComicsController extends Controller
             return 0;
         }
     }
+    public function updateComic(Request $request)
+    {
+        $ComicArray = json_decode($request->getContent(), true);
+        $result = Comics::where('id', $ComicArray['id'])
+            ->update([
+            'short_title' =>  $ComicArray['short_title'],
+            'short_description' =>  $ComicArray['short_description'],
+            'short_img' =>  $ComicArray['short_img'],
+            'long_title' =>  $ComicArray['long_title'],
+            'long_description' =>  $ComicArray['long_description'],
+            'total_buy' =>  $ComicArray['total_buy'],
+            'type_comic' =>  $ComicArray['type_comic'],
+            'tag_comic' =>  $ComicArray['tag_comic'],
+            'author_comic' =>  $ComicArray['author_comic'],
+            'price_comic' =>  $ComicArray['price_comic'],
+
+        ]);
+        if ($result == true) {
+            return 1;
+        } else {
+            return $ComicArray['id'];
+        }
+    }
 }
